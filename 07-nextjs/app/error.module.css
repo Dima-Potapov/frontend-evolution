@@ -1,0 +1,26 @@
+.container {
+  text-align: center;
+  padding: 48px 20px;
+}
+
+.title {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: #dc2626;
+  margin-bottom: 8px;
+}
+
+.message {
+  color: #888;
+  font-size: 0.875rem;
+  margin-bottom: 16px;
+}
+
+.button {
+  padding: 8px 20px;
+  background: #f97316;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 0.9rem;
+}

@@ -1,0 +1,21 @@
+.list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.empty {
+  text-align: center;
+  padding: 48px 20px;
+  color: #aaa;
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.06);
+}
+
+.hint {
+  font-size: 0.875rem;
+  margin-top: 4px;
+  color: #ccc;
+}
