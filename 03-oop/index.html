@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<!--
+  Версия 03: ООП (объектно-ориентированное программирование) на чистом JS.
+
+  Разметка та же, что в 01 и 02. Отличия:
+  1. jQuery больше НЕ подключаем: возвращаемся к чистому JavaScript.
+     Современный JS (querySelector, classList, closest) умеет почти всё,
+     ради чего раньше брали jQuery.
+  2. Скрипт подключается как МОДУЛЬ: <script type="module">.
+     Это позволяет разложить классы по отдельным файлам и
+     связать их через import / export (см. папку js/).
+
+  Почему HTML не меняется? Потому что ООП — это способ ОРГАНИЗОВАТЬ код,
+  а не новая библиотека. Пользователь видит то же самое приложение,
+  а программист — аккуратно разложенный по "ящикам" код.
+-->
+<html lang="ru">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Лента постов — ООП (классы ES6)</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+  <div class="app">
+
+    <h1 class="app-title">📝 Лента постов</h1>
+    <p class="app-subtitle">Версия 3: ООП — классы ES6 на чистом JS</p>
+
+    <!-- ===== ФОРМА ДОБАВЛЕНИЯ ПОСТА (та же, что в v1/v2) ===== -->
+    <form id="post-form" class="post-form">
+      <input
+        type="text"
+        id="post-title"
+        class="form-input"
+        placeholder="Заголовок поста"
+        required
+      >
+      <textarea
+        id="post-body"
+        class="form-textarea"
+        placeholder="О чём хотите написать?"
+        rows="3"
+        required
+      ></textarea>
+      <button type="submit" class="btn btn-primary">
+        Опубликовать
+      </button>
+    </form>
+
+    <!-- ===== КОНТЕЙНЕР ДЛЯ ЛЕНТЫ ПОСТОВ ===== -->
+    <div id="posts-container" class="posts-container"></div>
+
+    <!-- ===== СООБЩЕНИЕ-ЗАГЛУШКА ===== -->
+    <p id="empty-message" class="empty-message">
+      Пока нет ни одного поста. Напишите первый! ✍️
+    </p>
+
+  </div>
+
+  <!--
+    type="module" — КЛЮЧЕВОЕ отличие от v1 и v2.
+
+    Что меняет атрибут type="module":
+    — внутри файла можно писать import / export и делить код на файлы;
+    — у каждого модуля СВОЯ область видимости: переменные не попадают
+      в глобальный window (в v1 все функции были глобальными!);
+    — модуль автоматически работает в строгом режиме ('use strict');
+    — модуль выполняется ОТЛОЖЕННО (как defer): после разбора HTML.
+      Поэтому не нужны ни DOMContentLoaded, ни $(function(){}).
+
+    ⚠️ ВАЖНО ПРО ЗАПУСК: браузеры не загружают модули по протоколу file://
+    (двойной клик по index.html) из соображений безопасности (CORS).
+    Нужен локальный сервер. Самые простые варианты (см. README):
+      — расширение "Live Server" в VS Code;
+      — команда  npx serve .   или   python -m http.server
+  -->
+  <script type="module" src="js/main.js"></script>
+
+</body>
+</html>
