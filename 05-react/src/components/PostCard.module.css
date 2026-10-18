@@ -1,0 +1,72 @@
+/*
+  Стили карточки — как в v4 (PostCard.vue), но в CSS Modules.
+
+  Отличие от v4: там были селекторы-потомки (.post-card h2), а здесь у каждого элемента
+  свой класс (.title, .body). С CSS Modules так принято: короткие плоские имена,
+  уникальность обеспечивает сборщик.
+*/
+
+.card {
+  background: white;
+  border-radius: 12px;
+  padding: 20px 24px;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
+  animation: fadeIn 0.3s ease;
+}
+
+/* Имена @keyframes CSS Modules тоже делают уникальными. */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.title {
+  font-size: 1.15rem;
+  color: #1a202c;
+  margin-bottom: 8px;
+}
+
+.body {
+  color: #4a5568;
+  margin-bottom: 16px;
+  line-height: 1.7;
+  white-space: pre-wrap;
+}
+
+.actions {
+  display: flex;
+  gap: 8px;
+}
+
+.like {
+  background: #fff0f0;
+  color: #e53e3e;
+  border: 1px solid #fed7d7;
+  font-size: 0.85rem;
+  padding: 6px 12px;
+}
+
+.like:hover,
+.liked {
+  background: #fed7d7;
+}
+
+.delete {
+  background: #fff;
+  color: #718096;
+  border: 1px solid #e2e8f0;
+  font-size: 0.85rem;
+  padding: 6px 12px;
+}
+
+.delete:hover {
+  background: #fff5f5;
+  color: #e53e3e;
+  border-color: #fed7d7;
+}

@@ -1,0 +1,38 @@
+/*
+  App.module.css — стили компонента App (CSS Modules).
+
+  Суффикс .module.css — сигнал для Vite: «переименуй классы в уникальные».
+  В JSX классы используются через объект: className={styles.title}.
+  Откройте DevTools → Elements: вместо class="title" увидите что-то вроде class="_title_1k2j3_9".
+
+  [v4]: те же правила лежали в <style scoped> внутри App.vue.
+*/
+
+.app {
+  max-width: 680px;
+  margin: 0 auto;
+}
+
+.title {
+  font-size: 2rem;
+  font-weight: 800;
+  color: #1a202c;
+  margin-bottom: 4px;
+}
+
+.subtitle {
+  /* #087ea4 — фирменный синий react.dev. Логотипный голубой #61dafb на светлом фоне почти не читается.
+     Маркер версии: v1 серый, v2 синий, v3 фиолетовый, v4 зелёный, v5 бирюзово-синий. */
+  color: #087ea4;
+  font-size: 0.85rem;
+  font-weight: 600;
+  margin-bottom: 28px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.stats {
+  color: #718096;
+  font-size: 0.9rem;
+  margin-bottom: 12px;
+}

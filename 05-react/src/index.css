@@ -1,0 +1,40 @@
+/*
+  ============================================================
+   index.css — ГЛОБАЛЬНЫЕ стили (действуют на всю страницу)
+  ============================================================
+
+  Роль та же, что у src/style.css в v4: сброс, шрифт, фон, общая база кнопок.
+  Стили конкретных компонентов лежат рядом с ними в файлах *.module.css.
+
+  [v4 Vue]:   изоляция через <style scoped> внутри .vue-файла (атрибуты data-v-xxxx).
+  [v5 React]: в React нет встроенного аналога scoped. Самые популярные варианты:
+              CSS Modules (используем здесь — поддерживаются Vite «из коробки»),
+              Tailwind (будет в следующих этапах), CSS-in-JS (styled-components).
+*/
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  background: #f0f4f8;
+  color: #2d3748;
+  line-height: 1.6;
+  min-height: 100vh;
+  padding: 24px 16px;
+}
+
+/* Общая база кнопок — как в v4. Варианты (.primary, .like, .delete) — в модулях компонентов. */
+.btn {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 8px;
+  font-size: 0.95rem;
+  font-weight: 600;
+  font-family: inherit;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<!--
+  Версия 05: React + Vite.
+
+  Почти копия index.html из v4 (Vue): пустая «точка монтирования» + один модуль.
+  Это снова SPA: всю разметку строит JavaScript.
+
+  Отличия от v4 минимальные:
+   • id="root" вместо id="app" — просто традиция React-шаблонов (можно назвать как угодно);
+   • подключается /src/main.jsx — расширение .jsx говорит Vite: «внутри JSX,
+     прогони файл через плагин React».
+-->
+<html lang="ru">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Лента постов — React + Vite</title>
+</head>
+
+<body>
+  <!-- Сюда React «отрисует» компонент <App />. Снаружи #root React ничего не трогает. -->
+  <div id="root"></div>
+
+  <!-- Как и в v3/v4: модули не работают через file://, запуск — npm run dev. -->
+  <script type="module" src="/src/main.jsx"></script>
+</body>
+
+</html>

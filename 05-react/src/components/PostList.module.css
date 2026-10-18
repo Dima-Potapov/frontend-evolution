@@ -1,0 +1,14 @@
+/* Стили списка — те же, что в v4 (PostList.vue). */
+
+.list {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.empty {
+  text-align: center;
+  color: #a0aec0;
+  font-size: 1rem;
+  padding: 40px;
+}

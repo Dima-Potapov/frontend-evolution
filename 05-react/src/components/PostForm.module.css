@@ -1,0 +1,48 @@
+/* Стили формы — те же, что в v4 (<style scoped> в PostForm.vue), но в формате CSS Modules. */
+
+.form {
+  background: white;
+  border-radius: 12px;
+  padding: 24px;
+  margin-bottom: 28px;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.input,
+.textarea {
+  width: 100%;
+  padding: 12px 16px;
+  border: 2px solid #e2e8f0;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-family: inherit;
+  transition: border-color 0.2s ease;
+  outline: none;
+  resize: vertical;
+}
+
+.input:focus,
+.textarea:focus {
+  /* В фокусе — цвет React (в v4 был зелёный цвет Vue). */
+  border-color: #087ea4;
+}
+
+.error {
+  color: #e53e3e;
+  font-size: 0.9rem;
+}
+
+.primary {
+  background: #667eea;
+  color: white;
+  align-self: flex-start;
+}
+
+.primary:hover {
+  background: #5a67d8;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(102, 126, 234, 0.4);
+}
