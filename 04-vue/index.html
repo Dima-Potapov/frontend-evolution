@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<!--
+  Версия 04: Vue 3 + Vite.
+
+  Сравните с index.html из v1/v2/v3 — разметки почти НЕ осталось!
+
+  [v1–v3]: здесь была вся структура страницы: форма, инпуты, кнопка,
+           контейнер для постов, заглушка «постов нет». JavaScript искал
+           эти элементы по id и «оживлял» их.
+
+  [v4]:    здесь только ПУСТОЙ <div id="app">. Всю разметку теперь описывают
+           Vue-компоненты (файлы .vue в папке src/). Vue сам создаст нужные
+           DOM-элементы и вставит их внутрь #app.
+
+  Такое приложение называют SPA (Single Page Application, «одностраничное»):
+  HTML-файл один и почти пустой, а интерфейс строит JavaScript.
+-->
+<html lang="ru">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Лента постов — Vue 3 + Vite</title>
+  <!--
+    Обратите внимание: нет <link rel="stylesheet" href="style.css">!
+    CSS теперь импортируется прямо из JavaScript (import './style.css' в main.js),
+    а Vite сам вставит его на страницу.
+  -->
+</head>
+
+<body>
+  <!--
+    «Точка монтирования». Сюда Vue вставит корневой компонент App.vue.
+    Всё, что находится ВНУТРИ #app, — зона ответственности Vue.
+    Снаружи Vue ничего не трогает.
+  -->
+  <div id="app"></div>
+
+  <!--
+    type="module" — как в v3. Но путь указывает на /src/main.js,
+    и в режиме разработки этот файл отдаёт не диск напрямую, а dev-сервер Vite:
+    он на лету компилирует .vue-файлы, которые импортирует main.js.
+
+    ⚠️ Поэтому открыть index.html двойным кликом НЕЛЬЗЯ (ни в v3, ни тем более тут).
+    Запуск: npm install → npm run dev (см. README).
+
+    При npm run build Vite заменит эту строку на ссылку на собранный
+    и минифицированный файл вроде /assets/index-a1b2c3.js.
+  -->
+  <script type="module" src="/src/main.js"></script>
+</body>
+
+</html>

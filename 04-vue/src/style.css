@@ -1,0 +1,48 @@
+/*
+  ============================================================
+   style.css — ГЛОБАЛЬНЫЕ стили (действуют на всю страницу)
+  ============================================================
+
+  [v1–v3]: ВСЕ стили лежали в одном style.css — и сброс, и форма,
+           и карточки. Любой класс мог случайно «задеть» чужой элемент.
+
+  [v4]:    здесь остались только общие правила для всей страницы:
+           сброс отступов, шрифт и фон body, общие кнопки .btn.
+           Стили формы, карточки, списка переехали в <style scoped>
+           внутри соответствующих .vue-компонентов и действуют ТОЛЬКО на них.
+
+  Этот файл подключается в main.js через import './style.css'.
+*/
+
+/* ===== СБРОС СТИЛЕЙ (как в v1–v3) ===== */
+* {
+  /* border-box: padding и border входят в width/height элемента */
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  background: #f0f4f8;
+  color: #2d3748;
+  line-height: 1.6;
+  min-height: 100vh;
+  padding: 24px 16px;
+}
+
+/* ===== ОБЩИЕ КНОПКИ =====
+   Класс .btn используется и в форме (PostForm.vue), и в карточке (PostCard.vue).
+   Чтобы не копировать одно и то же в два компонента, общая «база» кнопки
+   остаётся глобальной, а конкретные варианты (.btn-primary, .btn-like)
+   описаны scoped-стилями в своих компонентах. */
+.btn {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 8px;
+  font-size: 0.95rem;
+  font-weight: 600;
+  font-family: inherit;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
