@@ -1,0 +1,38 @@
+<!--
+  [formGroup]="form"      — связать <form> с моделью FormGroup из класса
+  formControlName="title" — связать поле с FormControl 'title'
+  (ngSubmit)              — событие отправки (preventDefault делается автоматически)
+-->
+<form class="form" [formGroup]="form" (ngSubmit)="onSubmit()" novalidate>
+  <h2 class="form-heading">Новый пост</h2>
+
+  <input
+    class="input"
+    [class.invalid]="errorFor('title')"
+    type="text"
+    placeholder="Заголовок"
+    maxlength="100"
+    formControlName="title"
+  />
+  @if (errorFor('title'); as error) {
+    <p class="error" role="alert">{{ error }}</p>
+  }
+
+  <textarea
+    class="input"
+    [class.invalid]="errorFor('body')"
+    placeholder="Текст поста..."
+    rows="3"
+    maxlength="500"
+    formControlName="body"
+  ></textarea>
+  @if (errorFor('body'); as error) {
+    <p class="error" role="alert">{{ error }}</p>
+  }
+
+  <button type="submit" class="submit">Опубликовать</button>
+
+  @if (draftSavedAt(); as time) {
+    <p class="hint">💾 Черновик сохранён в {{ time }} (RxJS: debounceTime → localStorage)</p>
+  }
+</form>

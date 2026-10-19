@@ -1,0 +1,91 @@
+/* Глобальные стили ленты постов. Цвет версии — переменная --accent. */
+:root {
+  --accent: #dd0031;       /* фирменный красный Angular */
+  --accent-hover: #b0002a;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  background: #f0f4f8;
+  color: #2d3748;
+  line-height: 1.6;
+  min-height: 100vh;
+  padding: 24px 16px;
+}
+
+button { cursor: pointer; font-family: inherit; }
+
+.app { max-width: 680px; margin: 0 auto; }
+.title { font-size: 2rem; font-weight: 800; color: #1a202c; margin-bottom: 4px; }
+.subtitle {
+  color: var(--accent);
+  font-size: 0.85rem; font-weight: 600; margin-bottom: 28px;
+  text-transform: uppercase; letter-spacing: 0.5px;
+}
+.stats { color: #718096; font-size: 0.9rem; margin-bottom: 12px; }
+
+/* ---------- форма ---------- */
+.form {
+  background: white; border-radius: 12px; padding: 24px; margin-bottom: 28px;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
+  display: flex; flex-direction: column; gap: 12px;
+}
+.form-heading { font-size: 1rem; font-weight: 600; color: #2d3748; }
+.input {
+  width: 100%; padding: 12px 16px; border: 2px solid #e2e8f0; border-radius: 8px;
+  font-size: 1rem; font-family: inherit; outline: none; resize: vertical;
+  transition: border-color 0.2s ease;
+}
+.input:focus { border-color: var(--accent); }
+.input.invalid { border-color: #fc8181; }
+.error { color: #e53e3e; font-size: 0.85rem; margin-top: -6px; }
+.submit {
+  padding: 10px 20px; border: none; border-radius: 8px; font-size: 0.95rem; font-weight: 600;
+  background: var(--accent); color: white; align-self: flex-start; transition: all 0.2s ease;
+}
+.submit:hover { background: var(--accent-hover); transform: translateY(-1px); }
+
+/* ---------- список ---------- */
+.list { list-style: none; display: flex; flex-direction: column; gap: 16px; }
+.empty {
+  text-align: center; color: #a0aec0; padding: 40px; background: white;
+  border-radius: 12px; box-shadow: 0 2px 12px rgba(0, 0, 0, 0.05);
+}
+.hint { font-size: 0.875rem; margin-top: 4px; color: #cbd5e0; }
+
+/* ---------- карточка ---------- */
+.card {
+  background: white; border-radius: 12px; padding: 20px 24px;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
+  border: 2px solid transparent; animation: fadeIn 0.3s ease;
+}
+.card.confirming { border-color: #fed7d7; }
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(-8px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.card-title { font-size: 1.15rem; color: #1a202c; margin-bottom: 8px; word-break: break-word; }
+.card-body { color: #4a5568; margin-bottom: 8px; white-space: pre-wrap; word-break: break-word; }
+.card-meta { display: block; font-size: 0.75rem; color: #a0aec0; margin-bottom: 12px; }
+.actions { display: flex; align-items: center; flex-wrap: wrap; gap: 8px; }
+.btn {
+  padding: 6px 12px; border-radius: 8px; font-size: 0.85rem; font-weight: 600;
+  background: #fff; color: #718096; border: 1px solid #e2e8f0; transition: all 0.2s ease;
+}
+.btn:hover { background: #f7fafc; }
+.btn-like { background: #fff0f0; color: #e53e3e; border-color: #fed7d7; }
+.btn-like:hover, .btn-like.liked { background: #fed7d7; }
+.btn-delete:hover { background: #fff5f5; color: #e53e3e; border-color: #fed7d7; }
+.btn-danger { background: #e53e3e; color: white; border-color: #e53e3e; }
+.btn-danger:hover { background: #c53030; }
+.btn:disabled { opacity: 0.5; cursor: not-allowed; }
+.question { font-size: 0.85rem; color: #e53e3e; font-weight: 600; }
+
+/* ---------- шапка авторизации (используется в v09) ---------- */
+.auth-bar {
+  display: flex; align-items: center; justify-content: space-between; gap: 12px;
+  background: white; border-radius: 12px; padding: 12px 16px; margin-bottom: 20px;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06); font-size: 0.9rem;
+}

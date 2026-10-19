@@ -1,0 +1,25 @@
+<!--
+  Шаблон Angular — это HTML с расширенным синтаксисом:
+    {{ выражение }}     — интерполяция (вывод значения)
+    [свойство]="expr"   — привязка свойства (данные ВНИЗ)
+    (событие)="handler" — привязка события (события ВВЕРХ)
+    @if / @for          — встроенный control flow (Angular 17+; раньше *ngIf / *ngFor)
+  Сигнал читается вызовом: postsCount() — как в Solid.
+-->
+<div class="app">
+  <h1 class="title">📝 Лента постов</h1>
+  <p class="subtitle">Angular (DI + Signals + RxJS)</p>
+
+  <app-post-form />
+
+  @if (postService.postsCount() > 0) {
+    <p class="stats">Постов: {{ postService.postsCount() }} · Лайков: {{ postService.totalLikes() }}</p>
+  }
+
+  <!-- Данные вниз через [posts], события вверх через (like) / (remove) — как props/callbacks в React -->
+  <app-post-list
+    [posts]="postService.posts()"
+    (like)="postService.likePost($event)"
+    (remove)="postService.deletePost($event)"
+  />
+</div>
