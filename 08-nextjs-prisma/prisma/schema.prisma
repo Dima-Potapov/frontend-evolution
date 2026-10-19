@@ -1,0 +1,29 @@
+// schema.prisma — единственный источник правды о данных приложения.
+//
+// По этому файлу Prisma:
+//   1) генерирует типизированный TypeScript-клиент (`prisma generate`)
+//      → тип Post в компонентах берётся прямо отсюда, без ручного lib/types.ts;
+//   2) создаёт и изменяет таблицы в БД через миграции (`prisma migrate dev`).
+//
+// В отличие от v07 (globalThis-массив в памяти), данные теперь живут в PostgreSQL
+// и переживают перезапуск сервера, HMR и даже передеплой.
+
+// Источник данных — к какой БД подключаемся
+datasource db {
+  provider = "postgresql"        // СУБД: postgresql | mysql | sqlite | sqlserver | mongodb ...
+  url      = env("DATABASE_URL") // строка подключения берётся из .env (не коммитим её в git!)
+}
+
+// Генератор — что создавать из схемы. prisma-client-js = TypeScript/JS клиент в node_modules
+generator client {
+  provider = "prisma-client-js"
+}
+
+// Модель Post → таблица "Post" в PostgreSQL
+model Post {
+  id        Int      @id @default(autoincrement()) // SQL: "id" SERIAL PRIMARY KEY
+  title     String                                 // SQL: "title" TEXT NOT NULL
+  body      String                                 // SQL: "body" TEXT NOT NULL
+  likes     Int      @default(0)                   // SQL: "likes" INTEGER NOT NULL DEFAULT 0
+  createdAt DateTime @default(now())               // SQL: "createdAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP
+}
