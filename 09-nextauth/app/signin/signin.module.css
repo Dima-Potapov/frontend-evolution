@@ -1,0 +1,102 @@
+.page {
+  max-width: 420px;
+  margin: 0 auto;
+  padding: 64px 16px;
+}
+
+.card {
+  background: white;
+  border-radius: 12px;
+  padding: 24px;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.08);
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.title {
+  font-size: 1.5rem;
+  text-align: center;
+}
+
+.hint {
+  text-align: center;
+  color: #777;
+  font-size: 0.9rem;
+}
+
+.error {
+  color: #ef4444;
+  background: #fef2f2;
+  border-radius: 8px;
+  padding: 8px 12px;
+  font-size: 0.85rem;
+}
+
+.google,
+.button {
+  width: 100%;
+  padding: 10px;
+  border-radius: 8px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.google {
+  background: white;
+  border: 1px solid #e2e8f0;
+  color: #333;
+}
+
+.google:hover {
+  border-color: #3b82f6;
+}
+
+.button {
+  background: #3b82f6;
+  border: none;
+  color: white;
+}
+
+.button:hover {
+  background: #2563eb;
+}
+
+.divider {
+  text-align: center;
+  color: #aaa;
+  font-size: 0.8rem;
+}
+
+.demo {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.input {
+  width: 100%;
+  padding: 10px 12px;
+  border: 1px solid #e2e8f0;
+  border-radius: 8px;
+  font-size: 0.9rem;
+  font-family: inherit;
+}
+
+.input:focus {
+  outline: none;
+  border-color: #3b82f6;
+}
+
+.warning {
+  font-size: 0.75rem;
+  color: #b45309;
+}
+
+.back {
+  text-align: center;
+  color: #3b82f6;
+  font-size: 0.85rem;
+  text-decoration: none;
+}

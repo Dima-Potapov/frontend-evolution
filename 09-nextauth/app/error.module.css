@@ -1,0 +1,38 @@
+.container {
+  text-align: center;
+  padding: 48px 20px;
+}
+
+.title {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: #dc2626;
+  margin-bottom: 8px;
+}
+
+.hint {
+  display: inline-block;
+  font-size: 0.85rem;
+  color: #2563eb;
+  background: #d1fae5;
+  padding: 8px 16px;
+  border-radius: 6px;
+  margin-bottom: 12px;
+  text-align: left;
+}
+
+.message {
+  color: #888;
+  font-size: 0.875rem;
+  margin-bottom: 16px;
+  font-family: monospace;
+}
+
+.button {
+  padding: 8px 20px;
+  background: #3b82f6;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 0.9rem;
+}

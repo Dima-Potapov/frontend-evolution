@@ -1,0 +1,166 @@
+.card {
+  background: white;
+  border-radius: 12px;
+  padding: 16px;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.08);
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 12px;
+  transition: opacity 0.3s, transform 0.3s;
+}
+
+.deleting {
+  opacity: 0.4;
+  transform: scale(0.98);
+}
+
+.body {
+  flex: 1;
+  min-width: 0;
+}
+
+.title {
+  font-size: 1rem;
+  font-weight: 600;
+  margin-bottom: 6px;
+  color: #1a1a2e;
+  word-break: break-word;
+}
+
+.text {
+  font-size: 0.875rem;
+  color: #555;
+  margin-bottom: 8px;
+  word-break: break-word;
+}
+
+.date {
+  font-size: 0.75rem;
+  color: #aaa;
+}
+
+.actions {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  flex-shrink: 0;
+}
+
+.likeBtn {
+  padding: 6px 10px;
+  border: 1px solid #e2e8f0;
+  border-radius: 8px;
+  background: white;
+  font-size: 0.85rem;
+  color: #555;
+  min-width: 60px;
+  text-align: center;
+  transition: border-color 0.15s, color 0.15s;
+}
+
+.likeBtn:hover:not(:disabled) {
+  border-color: #f43f5e;
+  color: #f43f5e;
+}
+
+.likeBtn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.deleteBtn {
+  padding: 6px 10px;
+  border: 1px solid #e2e8f0;
+  border-radius: 8px;
+  background: white;
+  font-size: 0.85rem;
+  transition: border-color 0.15s;
+}
+
+.deleteBtn:hover:not(:disabled) {
+  border-color: #ef4444;
+}
+
+.deleteBtn:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+/* --- Новое в v09 --- */
+.author {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin-bottom: 6px;
+  font-size: 0.8rem;
+  color: #666;
+}
+
+.avatar,
+.avatarFallback {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+}
+
+.avatarFallback {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: #3b82f6;
+  color: white;
+  font-size: 0.65rem;
+  font-weight: 600;
+}
+
+.authorName {
+  font-weight: 500;
+}
+
+.mine {
+  background: #eff6ff;
+  color: #3b82f6;
+  border-radius: 4px;
+  padding: 0 6px;
+  font-size: 0.7rem;
+}
+
+.liked {
+  border-color: #f43f5e;
+  color: #f43f5e;
+}
+
+.error {
+  margin-top: 6px;
+  color: #ef4444;
+  font-size: 0.8rem;
+}
+
+.confirm {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 10px;
+  font-size: 0.85rem;
+  color: #555;
+}
+
+.confirmYes,
+.confirmNo {
+  padding: 4px 10px;
+  border-radius: 6px;
+  font-size: 0.8rem;
+  cursor: pointer;
+}
+
+.confirmYes {
+  background: #ef4444;
+  border: none;
+  color: white;
+}
+
+.confirmNo {
+  background: white;
+  border: 1px solid #e2e8f0;
+}

@@ -1,0 +1,49 @@
+.app {
+  max-width: 680px;
+  margin: 0 auto;
+  padding: 24px 16px;
+}
+
+.header {
+  text-align: center;
+  margin-bottom: 32px;
+}
+
+.header h1 {
+  font-size: 2rem;
+  font-weight: 700;
+  margin-bottom: 6px;
+}
+
+.subtitle {
+  color: #3b82f6;
+  font-size: 0.9rem;
+  font-weight: 500;
+  letter-spacing: 0.5px;
+  margin-bottom: 4px;
+}
+
+.stats {
+  font-size: 0.8rem;
+  color: #999;
+}
+
+.main {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.guest {
+  background: white;
+  border-radius: 12px;
+  padding: 16px;
+  text-align: center;
+  color: #555;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.08);
+}
+
+.guest a {
+  color: #3b82f6;
+  font-weight: 600;
+}

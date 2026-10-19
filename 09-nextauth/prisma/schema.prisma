@@ -1,0 +1,110 @@
+// schema.prisma — v09: появились ПОЛЬЗОВАТЕЛИ и СВЯЗИ между таблицами.
+//
+// Что изменилось по сравнению с v08:
+//   + User, Account, Session, VerificationToken — стандартные модели Auth.js
+//     (их ожидает @auth/prisma-adapter; названия полей менять нельзя).
+//   + Post.authorId — у каждого поста есть автор (связь 1 : N, «один ко многим»).
+//   + Like — отдельная таблица «кто какой пост лайкнул» (связь N : M, «многие ко многим»).
+//   − Post.likes (счётчик) удалён: теперь число лайков = количество строк в Like.
+//     Раньше один человек мог «накрутить» 100 лайков, теперь — максимум один.
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+// ───────────────────────────── Наши модели ─────────────────────────────
+
+model Post {
+  id        Int      @id @default(autoincrement())
+  title     String
+  body      String
+  createdAt DateTime @default(now())
+
+  // Связь 1:N. authorId — внешний ключ (FOREIGN KEY) на User.id.
+  // onDelete: Cascade — удалили пользователя → удалились и его посты.
+  authorId String
+  author   User   @relation(fields: [authorId], references: [id], onDelete: Cascade)
+
+  likes Like[]
+
+  @@index([authorId]) // ускоряет выборку «посты пользователя» (страница /my)
+}
+
+// Таблица-связка для N:M. Составной первичный ключ (userId, postId)
+// гарантирует на уровне БАЗЫ, что один пользователь лайкнет пост только один раз.
+model Like {
+  userId    String
+  postId    Int
+  createdAt DateTime @default(now())
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+  post Post @relation(fields: [postId], references: [id], onDelete: Cascade)
+
+  @@id([userId, postId])
+}
+
+// ─────────────────── Модели Auth.js (@auth/prisma-adapter) ───────────────────
+// Источник: https://authjs.dev/getting-started/adapters/prisma
+
+model User {
+  id            String    @id @default(cuid())
+  name          String?
+  email         String?   @unique
+  emailVerified DateTime?
+  image         String?   // аватар (Google присылает ссылку на фото профиля)
+  createdAt     DateTime  @default(now())
+  updatedAt     DateTime  @updatedAt
+
+  accounts Account[]
+  sessions Session[]
+  posts    Post[]   // обратная сторона связи 1:N
+  likes    Like[]
+}
+
+// Account — «через какого провайдера вошёл пользователь».
+// Один User может иметь несколько Account: Google + GitHub на один и тот же email.
+model Account {
+  userId            String
+  type              String
+  provider          String  // "google", "github", ...
+  providerAccountId String  // id пользователя У ПРОВАЙДЕРА
+  refresh_token     String?
+  access_token      String?
+  expires_at        Int?
+  token_type        String?
+  scope             String?
+  id_token          String?
+  session_state     String?
+  createdAt         DateTime @default(now())
+  updatedAt         DateTime @updatedAt
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@id([provider, providerAccountId])
+}
+
+// Session и VerificationToken используются при session strategy "database"
+// и входе по email-ссылке. Мы используем JWT-сессии (см. auth.ts), но модели
+// оставлены: адаптер их ожидает, и так проще переключиться.
+model Session {
+  sessionToken String   @unique
+  userId       String
+  expires      DateTime
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+}
+
+model VerificationToken {
+  identifier String
+  token      String
+  expires    DateTime
+
+  @@id([identifier, token])
+}
