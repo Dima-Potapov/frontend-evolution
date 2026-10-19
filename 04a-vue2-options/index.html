@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Post Feed — Vue 2 Options API</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <!-- Точка монтирования: new Vue({ el: '#app' }) заменит этот div на корневой компонент -->
+  <div id="app"></div>
+
+  <!--
+    Vue 2 и Vuex 3 подключаются через CDN — без npm, без сборщика.
+    Так в 2016–2018 начинали большинство Vue-проектов (и так Vue «продавал» себя:
+    «добавь один <script> на страницу — и всё работает»).
+
+    ВАЖНО: используем ПОЛНУЮ сборку vue.js (с компилятором шаблонов),
+    потому что шаблоны компонентов у нас — строки в свойстве template.
+    Runtime-only сборка (vue.runtime.js) умеет только render-функции,
+    а .vue-файлы компилирует vue-loader на этапе сборки (как Vite в v04).
+
+    Версии закреплены (2.7.16 / 3.6.2): «vue@2» без точной версии — плохая практика,
+    на CDN это может внезапно подтянуть другую минорную версию.
+    vue.js — dev-сборка с подробными предупреждениями в консоли.
+    Для production: vue.min.js / vuex.min.js.
+  -->
+  <script src="https://unpkg.com/vue@2.7.16/dist/vue.js"></script>
+  <script src="https://unpkg.com/vuex@3.6.2/dist/vuex.js"></script>
+
+  <!--
+    Обычные (не module) скрипты: всё общается через глобальные переменные
+    Vue, Vuex, store. Порядок подключения ВАЖЕН:
+      1) store.js — создаёт глобальный store;
+      2) компоненты — регистрируются глобально через Vue.component();
+      3) main.js — создаёт корневой экземпляр new Vue().
+    Сравни с v04: там import/export и Vite сам разруливает зависимости.
+  -->
+  <script src="js/store.js"></script>
+  <script src="js/PostCard.js"></script>
+  <script src="js/PostList.js"></script>
+  <script src="js/PostForm.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>

@@ -1,0 +1,255 @@
+/*
+  Глобальные стили. В Vue 2 без сборщика нет <style scoped> —
+  он работает только в .vue-файлах через vue-loader.
+  Поэтому используем BEM-подобные префиксы классов (post-card__title),
+  чтобы стили компонентов не конфликтовали.
+*/
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  background: #f8f9fa;
+  color: #1a1a2e;
+  line-height: 1.6;
+}
+
+button {
+  cursor: pointer;
+  font-family: inherit;
+}
+
+/* ===== App ===== */
+.app {
+  max-width: 680px;
+  margin: 0 auto;
+  padding: 24px 16px;
+}
+
+.header {
+  text-align: center;
+  margin-bottom: 32px;
+}
+
+.header h1 {
+  font-size: 2rem;
+  font-weight: 700;
+  margin-bottom: 6px;
+}
+
+.subtitle {
+  color: #06b6d4;
+  font-size: 0.9rem;
+  font-weight: 500;
+  letter-spacing: 0.5px;
+  margin-bottom: 4px;
+}
+
+.stats {
+  font-size: 0.8rem;
+  color: #999;
+}
+
+.main {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+/* ===== PostForm ===== */
+.post-form {
+  background: white;
+  border-radius: 12px;
+  padding: 20px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.post-form__heading {
+  font-size: 1rem;
+  font-weight: 600;
+  color: #333;
+}
+
+.post-form__field {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.post-form__input,
+.post-form__textarea {
+  width: 100%;
+  padding: 10px 12px;
+  border: 1px solid #e2e8f0;
+  border-radius: 8px;
+  font-size: 0.9rem;
+  font-family: inherit;
+  outline: none;
+  resize: vertical;
+  transition: border-color 0.15s;
+}
+
+.post-form__input:focus,
+.post-form__textarea:focus {
+  border-color: #06b6d4;
+}
+
+.post-form__input--invalid,
+.post-form__textarea--invalid {
+  border-color: #ef4444;
+}
+
+.post-form__error {
+  font-size: 0.8rem;
+  color: #ef4444;
+}
+
+.post-form__footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.post-form__counter {
+  font-size: 0.75rem;
+  color: #aaa;
+}
+
+.post-form__button {
+  padding: 10px 20px;
+  background: #06b6d4;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 0.9rem;
+  font-weight: 500;
+  transition: background 0.15s, opacity 0.15s;
+}
+
+.post-form__button:hover:not(:disabled) {
+  background: #0891b2;
+}
+
+.post-form__button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+/* ===== PostList ===== */
+.post-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.post-list__empty {
+  text-align: center;
+  padding: 48px 20px;
+  color: #aaa;
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.06);
+}
+
+.post-list__hint {
+  font-size: 0.875rem;
+  margin-top: 4px;
+  color: #ccc;
+}
+
+/* ===== PostCard ===== */
+.post-card {
+  background: white;
+  border-radius: 12px;
+  padding: 16px 20px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+  border: 2px solid transparent;
+  transition: border-color 0.2s;
+}
+
+.post-card--confirming {
+  border-color: #fecaca;
+}
+
+.post-card__title {
+  font-size: 1rem;
+  font-weight: 600;
+  margin-bottom: 6px;
+  word-break: break-word;
+}
+
+.post-card__body {
+  font-size: 0.875rem;
+  color: #555;
+  margin-bottom: 8px;
+  white-space: pre-wrap;
+  word-break: break-word;
+}
+
+.post-card__date {
+  display: block;
+  font-size: 0.75rem;
+  color: #aaa;
+  margin-bottom: 10px;
+}
+
+.post-card__actions {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.post-card__btn {
+  padding: 6px 12px;
+  border: 1px solid #e2e8f0;
+  border-radius: 8px;
+  background: white;
+  font-size: 0.85rem;
+  color: #555;
+  transition: border-color 0.15s, color 0.15s, background 0.15s;
+}
+
+.post-card__btn--like:hover {
+  border-color: #f43f5e;
+  color: #f43f5e;
+}
+
+.post-card__btn--delete:hover {
+  border-color: #ef4444;
+}
+
+.post-card__btn--danger {
+  background: #ef4444;
+  border-color: #ef4444;
+  color: white;
+}
+
+.post-card__btn--danger:hover {
+  background: #dc2626;
+}
+
+.post-card__confirm-text {
+  font-size: 0.85rem;
+  color: #dc2626;
+}
+
+/* ===== <transition-group name="post"> (встроенный компонент Vue) ===== */
+.post-enter-active,
+.post-leave-active {
+  transition: opacity 0.25s, transform 0.25s;
+}
+
+.post-enter,
+.post-leave-to {
+  opacity: 0;
+  transform: translateY(-8px);
+}
