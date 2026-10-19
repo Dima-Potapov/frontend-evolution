@@ -23,6 +23,18 @@
   margin-bottom: 4px;
 }
 
+.labLink {
+  display: inline-block;
+  font-size: 0.85rem;
+  color: #10b981;
+  text-decoration: none;
+  margin-bottom: 4px;
+}
+
+.labLink:hover {
+  text-decoration: underline;
+}
+
 .stats {
   font-size: 0.8rem;
   color: #999;

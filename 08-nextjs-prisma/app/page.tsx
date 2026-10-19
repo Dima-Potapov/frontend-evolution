@@ -1,3 +1,4 @@
+import Link from 'next/link';
 import { prisma } from '@/lib/prisma';
 import PostForm from '@/components/PostForm';
 import PostList from '@/components/PostList';
@@ -29,6 +30,8 @@ export default async function Home() {
       <header className={styles.header}>
         <h1>📝 Post Feed</h1>
         <p className={styles.subtitle}>v8 · Next.js + Prisma ORM + PostgreSQL</p>
+        {/* Учебная лаборатория: SSG / ISR / SSR / CSR на одних и тех же данных */}
+        <Link href="/lab" className={styles.labLink}>🔬 Лаборатория рендеринга</Link>
         {posts.length > 0 && (
           <p className={styles.stats}>
             {posts.length} постов · {totalLikes} лайков
