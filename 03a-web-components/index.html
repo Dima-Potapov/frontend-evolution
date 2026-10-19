@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Post Feed — Web Components</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="app">
+    <header class="header">
+      <h1>📝 Post Feed</h1>
+      <!-- Кастомные элементы — как нативные HTML-теги, только наши -->
+      <p class="subtitle">v3a · Web Components (Custom Elements + Shadow DOM)</p>
+    </header>
+
+    <main class="main">
+      <!--
+        <post-form> и <post-list> — кастомные HTML-элементы.
+        Браузер не знает их сразу, но после customElements.define()
+        они становятся полноценными DOM-элементами.
+        
+        Это то, что Vue делает с <PostForm />, React с <PostForm />,
+        Angular с <app-post-form> — только здесь это нативный стандарт браузера.
+      -->
+      <post-form></post-form>
+      <post-list></post-list>
+    </main>
+  </div>
+
+  <!--
+    type="module": включает ES-модули в браузере.
+    - автоматически defer (не блокирует парсинг HTML)
+    - строгий режим (use strict)
+    - каждый файл — отдельный модуль со своей областью видимости
+    - import/export как в Node.js, но в браузере
+  -->
+  <script type="module" src="js/main.js"></script>
+</body>
+</html>
