@@ -1,0 +1,102 @@
+.card {
+  background: white;
+  border-radius: 12px;
+  padding: 20px 24px;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
+  border: 2px solid transparent;
+  animation: fadeIn 0.3s ease;
+  transition: border-color 0.2s ease;
+}
+
+.confirming {
+  border-color: #fed7d7;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(-8px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.title {
+  font-size: 1.15rem;
+  color: #1a202c;
+  margin-bottom: 8px;
+  word-break: break-word;
+}
+
+.body {
+  color: #4a5568;
+  margin-bottom: 8px;
+  line-height: 1.7;
+  white-space: pre-wrap;
+  word-break: break-word;
+}
+
+.date {
+  display: block;
+  font-size: 0.75rem;
+  color: #a0aec0;
+  margin-bottom: 12px;
+}
+
+.actions {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.like,
+.delete,
+.danger,
+.secondary {
+  padding: 6px 12px;
+  border-radius: 8px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  transition: all 0.2s ease;
+}
+
+.like {
+  background: #fff0f0;
+  color: #e53e3e;
+  border: 1px solid #fed7d7;
+}
+
+.like:hover,
+.liked {
+  background: #fed7d7;
+}
+
+.delete,
+.secondary {
+  background: #fff;
+  color: #718096;
+  border: 1px solid #e2e8f0;
+}
+
+.delete:hover {
+  background: #fff5f5;
+  color: #e53e3e;
+  border-color: #fed7d7;
+}
+
+.secondary:hover {
+  background: #f7fafc;
+}
+
+.question {
+  font-size: 0.85rem;
+  color: #e53e3e;
+  font-weight: 600;
+}
+
+.danger {
+  background: #e53e3e;
+  color: white;
+  border: 1px solid #e53e3e;
+}
+
+.danger:hover {
+  background: #c53030;
+}
